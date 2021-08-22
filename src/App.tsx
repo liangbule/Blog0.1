@@ -1,23 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
+import { DefaultLayout } from './layout';
+import { Router } from "react-router";
+import store from "./store";
+import { ConfigProvider } from "antd";
+import "./App.css";
+import { antd } from "./locale";
 
 function App() {
+  let language = 'zh_CN'
+  const locale = antd(language);
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider locale={locale}>
+      <DefaultLayout />
+    </ConfigProvider>
   );
 }
 

@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: liangbule
+ * @Date: 2021-08-22 16:30:25
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-22 20:22:56
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,7 +17,6 @@ import store from './store';
 ReactDOM.render(
   // <React.StrictMode>
   <Provider store={store}>
-
     <App />
   </Provider>
   // </React.StrictMode>,
