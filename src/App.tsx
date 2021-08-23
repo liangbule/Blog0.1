@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: liangbule
+ * @Date: 2021-08-22 16:30:25
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-22 23:47:00
+ */
 import React from "react";
 import { connect } from "react-redux";
 import { DefaultLayout } from './layout';

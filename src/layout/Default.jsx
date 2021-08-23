@@ -1,9 +1,12 @@
 import React from 'react'
-
+import Navigation from '../pages/navigation'
 export default function Default() {
   return (
-    <div>
-      首页
+    <div style={{
+      marginLeft:240,
+      marginRight:240,
+    }}>
+      <Navigation />
     </div>
   )
 }
