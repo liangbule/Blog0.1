@@ -16,7 +16,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css' }
     ]
   },
 
@@ -29,6 +30,7 @@ export default {
   plugins: [
     './plugins/axios.js',
     './plugins/router.js',
+    './plugins/icons.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,6 +47,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

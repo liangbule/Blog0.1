@@ -2,7 +2,7 @@
  * @Author: bucai
  * @Date: 2020-04-19 14:39:55
  * @LastEditors: liangbule
- * @LastEditTime: 2021-08-25 23:39:29
+ * @LastEditTime: 2021-08-26 00:02:37
  * @Description: axios配置
  */
 // import Snackbar from '../components/snackbar';
@@ -25,32 +25,32 @@ export default function ({ $axios, app, redirect, error: _error }) {
   }
 
   // $axios.setBaseURL(process.env.API_BASE_URL);
-  // $axios.onRequest(config => {
-  //   const token = app.$cookies.get('Authorization');
-  //   // console.log('token', token);
-  //   if (token) {
-  //     config.headers['Authorization'] = token;
-  //   }
-  // });
-  // $axios.onResponse(res => {
-  //   // console.log('$axios', res.data);
-  //   const resData = res.data;
-  //   if (typeof resData === 'object') {
-  //     if (resData.code === 0) {
-  //       return resData.data;
-  //     }
-  //     errorHandle(resData);
-  //     if (process.client) {
-  //       throw resData;
-  //     }
-  //   }
-  //   return res;
-  // });
+  $axios.onRequest(config => {
+    const token = app.$cookies.get('Authorization');
+    // console.log('token', token);
+    if (token) {
+      config.headers['Authorization'] = token;
+    }
+  });
+  $axios.onResponse(res => {
+    // console.log('$axios', res.data);
+    const resData = res.data;
+    if (typeof resData === 'object') {
+      if (resData.code === 0) {
+        return resData.data;
+      }
+      errorHandle(resData);
+      if (process.client) {
+        throw resData;
+      }
+    }
+    return res;
+  });
 
 
   // 处理服务器错误
-  // $axios.onError(error => {
-  //   // console.log('HTTP_ERROR', error);
-  //   console.log('error.message', JSON.stringify(error.message));
-  // })
+  $axios.onError(error => {
+    // console.log('HTTP_ERROR', error);
+    console.log('error.message', JSON.stringify(error.message));
+  })
 }

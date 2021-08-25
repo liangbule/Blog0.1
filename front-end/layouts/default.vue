@@ -15,15 +15,15 @@
         </div>
         <div class="toolbar-action">
           <v-btn elevation="0" nuxt to="/search/" text>
-            <!-- <v-icon>{{ $icons['mdi-magnify'] }}</v-icon> -->
+            <v-icon>{{ $icons['mdi-magnify'] }}</v-icon>
           </v-btn>
           <v-btn elevation="0" @click="handleChangeTheme" text small>
-            <!-- <v-icon v-if="$vuetify.theme.dark">{{
+            <v-icon v-if="$vuetify.theme.dark">{{
               $icons['mdi-white-balance-sunny']
             }}</v-icon>
             <v-icon v-if="!$vuetify.theme.dark">{{
               $icons['mdi-weather-night']
-            }}</v-icon> -->
+            }}</v-icon>
           </v-btn>
 
           <v-btn elevation="0" text small v-if="user" @click="handleGoMessage">
@@ -34,7 +34,7 @@
               small
               overlap
             >
-              <!-- <v-icon>{{ $icons['mdi-bell'] }}</v-icon> -->
+              <v-icon>{{ $icons['mdi-bell'] }}</v-icon>
             </v-badge>
           </v-btn>
           <v-btn
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="toolbar-apps">
-          <!-- <v-icon @click="handleShowSide">{{ $icons['mdi-menu'] }}</v-icon> -->
+          <v-icon @click="handleShowSide">{{ $icons['mdi-menu'] }}</v-icon>
         </div>
       </div>
     </v-app-bar>
@@ -59,7 +59,7 @@
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
-        <!-- <nuxt /> -->
+        <nuxt />
       </v-container>
     </v-main>
 
@@ -121,45 +121,46 @@ export default {
   },
   watch: {
     user () {
-      // this.loadUserMessageCount();
+      this.loadUserMessageCount();
     }
   },
   mounted () {
     const h = new Date().getHours();
     const theme = this.$cookies.get('theme');
-    console.log('this',theme,this);
+
+    console.log('this',theme,this.$cookies);
     let isDark = (h >= 19 && h <= 24) || (h >= 0 && h <= 7);
     if (theme) {
       isDark = theme === 'white';
     }
     this.$vuetify.theme.dark = isDark;
-    // this.handleLoadNoticeStatus();
+    this.handleLoadNoticeStatus();
   },
   methods: {
-  //   ...mapMutations(['SET_LOGIN_OR_REGISTER_DIALOG']),
+    ...mapMutations(['SET_LOGIN_OR_REGISTER_DIALOG']),
     handleChangeTheme () {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'dark' : 'white');
     },
-  //   handleShowSide () {
-  //     this.$store.commit('SET_SIDE_STATUS', true);
-  //   },
-  //   // async loadUserMessageCount () {
-  //   //   const user = this.user;
-  //   //   if (!user) return;
-  //   //   const resData = await this.$axios.get('/api/users/notify/count');
-  //   //   this.messageCount = resData;
-  //   // },
-  //   handleGoMessage () {
-  //     this.$router.push('/user/notice')
-  //   },
-  //   async handleLoadNoticeStatus () {
-  //     await this.$store.dispatch('loadNoticeStatus');
+    handleShowSide () {
+      this.$store.commit('SET_SIDE_STATUS', true);
+    },
+    async loadUserMessageCount () {
+      const user = this.user;
+      if (!user) return;
+      const resData = await this.$axios.get('/api/users/notify/count');
+      this.messageCount = resData;
+    },
+    handleGoMessage () {
+      this.$router.push('/user/notice')
+    },
+    async handleLoadNoticeStatus () {
+      await this.$store.dispatch('loadNoticeStatus');
 
-  //     setTimeout(() => {
-  //       this.handleLoadNoticeStatus();
-  //     }, 3000);
-  //   }
+      setTimeout(() => {
+        this.handleLoadNoticeStatus();
+      }, 3000);
+    }
   }
 };
 </script>
