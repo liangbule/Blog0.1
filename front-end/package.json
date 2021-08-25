@@ -1,6 +1,8 @@
 {
   "name": "front-end",
   "version": "1.0.0",
+  "description": "这是凉不乐的个人博客，记录生活，学习笔记。欢迎各位常来看看。",
+  "author": "liangbule",
   "private": true,
   "scripts": {
     "dev": "nuxt",

@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - front-end',
@@ -21,6 +22,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/common.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
