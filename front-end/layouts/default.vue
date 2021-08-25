@@ -59,7 +59,7 @@
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
-        <nuxt />
+        <!-- <nuxt /> -->
       </v-container>
     </v-main>
 
@@ -117,7 +117,7 @@ export default {
     };
   },
   computed: {
-    // ...mapState(['user', 'noticeStatus', 'LoginOrRegisterDialog', 'sideStatus'])
+    ...mapState(['user', 'noticeStatus', 'LoginOrRegisterDialog', 'sideStatus'])
   },
   watch: {
     user () {
@@ -125,13 +125,14 @@ export default {
     }
   },
   mounted () {
-    // const h = new Date().getHours();
-    // const theme = this.$cookies.get('theme');
-    // let isDark = (h >= 19 && h <= 24) || (h >= 0 && h <= 7);
-    // if (theme) {
-    //   isDark = theme === 'dark';
-    // }
-    // this.$vuetify.theme.dark = isDark;
+    const h = new Date().getHours();
+    const theme = this.$cookies.get('theme');
+    console.log('this',theme,this);
+    let isDark = (h >= 19 && h <= 24) || (h >= 0 && h <= 7);
+    if (theme) {
+      isDark = theme === 'white';
+    }
+    this.$vuetify.theme.dark = isDark;
     // this.handleLoadNoticeStatus();
   },
   methods: {
