@@ -1,117 +1,236 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+  <v-app>
+    <v-app-bar app dense flat :height="56" tile>
+      <!-- -->
+      <div class="toolbar-content container">
+        <div class="toolbar-title">
+          <v-btn elevation="0" text href="/" nuxt>凉不乐</v-btn>
+        </div>
+        <div class="toolbar-nav">
+          <v-btn to="/" elevation="0" tile text nuxt>首页</v-btn>
+          <v-btn to="/message" elevation="0" tile text nuxt>留言</v-btn>
+          <v-btn to="/links" elevation="0" tile text nuxt>友邻</v-btn>
+          <v-btn to="/friends" elevation="0" tile text nuxt>圈子</v-btn>
+          <v-btn to="/timelines" elevation="0" tile text nuxt>归档</v-btn>
+        </div>
+        <div class="toolbar-action">
+          <v-btn elevation="0" nuxt to="/search/" text>
+            <!-- <v-icon>{{ $icons['mdi-magnify'] }}</v-icon> -->
+          </v-btn>
+          <v-btn elevation="0" @click="handleChangeTheme" text small>
+            <!-- <v-icon v-if="$vuetify.theme.dark">{{
+              $icons['mdi-white-balance-sunny']
+            }}</v-icon>
+            <v-icon v-if="!$vuetify.theme.dark">{{
+              $icons['mdi-weather-night']
+            }}</v-icon> -->
+          </v-btn>
+
+          <v-btn elevation="0" text small v-if="user" @click="handleGoMessage">
+            <v-badge
+              color="error"
+              :content="noticeStatus.unread"
+              :value="noticeStatus && noticeStatus.unread"
+              small
+              overlap
+            >
+              <!-- <v-icon>{{ $icons['mdi-bell'] }}</v-icon> -->
+            </v-badge>
+          </v-btn>
+          <v-btn
+            color="info"
+            elevation="0"
+            @click="SET_LOGIN_OR_REGISTER_DIALOG"
+            v-if="!user"
+            >登录</v-btn
+          >
+          <div class="pl-2" v-else>
+            <current-user />
+          </div>
+        </div>
+        <div class="toolbar-apps">
+          <!-- <v-icon @click="handleShowSide">{{ $icons['mdi-menu'] }}</v-icon> -->
+        </div>
+      </div>
     </v-app-bar>
+
+    <!-- Sizes your content based upon application components -->
     <v-main>
-      <v-container>
-        <Nuxt />
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <!-- If using vue-router -->
+        <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+
+    <v-lazy transition="scale-transition" min-height="100px">
+      <v-footer app absolute>
+        <v-container>
+          <div class="footer">
+            <p>
+              &copy; 2021
+              <a href="/">凉不乐</a> All Rights Reserved.
+            </p>
+            <a
+              href="http://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >赣ICP备18012932号-1</a
+            >
+          </div>
+        </v-container>
+      </v-footer>
+    </v-lazy>
+    <!-- <LoginOrRegister v-if="LoginOrRegisterDialog" /> -->
+    <!-- <NavigationDrawer v-if="sideStatus" /> -->
+    <ScrollToTop />
+    <!-- <SvgWalle /> -->
   </v-app>
 </template>
 
 <script>
+import { mapMutations, mapState, mapActions } from 'vuex';
+import CurrentUser from '@/components/CurrentUser.vue';
+// import NavigationDrawer from '@/components/NavigationDrawer.vue';
+import ScrollToTop from '@/components/ScrollToTop.vue';
+import ComponetLoading from '@/components/common/Loading.vue';
+
 export default {
+  components: {
+    // LoginOrRegister: () => {
+    //   return {
+    //     component: import('@/components/LoginOrRegister.vue'),
+    //     loading: ComponetLoading,
+    //     delay: 100,
+    //     timeout: 3000
+    //   };
+    // },
+    ComponetLoading,
+    CurrentUser,
+    // NavigationDrawer: () => import('@/components/NavigationDrawer.vue'),
+    ScrollToTop,
+    // SvgWalle: () => import('@/components/svg/Walle.vue')
+  },
   data () {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+
+    };
+  },
+  computed: {
+    // ...mapState(['user', 'noticeStatus', 'LoginOrRegisterDialog', 'sideStatus'])
+  },
+  watch: {
+    user () {
+      // this.loadUserMessageCount();
+    }
+  },
+  mounted () {
+    // const h = new Date().getHours();
+    // const theme = this.$cookies.get('theme');
+    // let isDark = (h >= 19 && h <= 24) || (h >= 0 && h <= 7);
+    // if (theme) {
+    //   isDark = theme === 'dark';
+    // }
+    // this.$vuetify.theme.dark = isDark;
+    // this.handleLoadNoticeStatus();
+  },
+  methods: {
+  //   ...mapMutations(['SET_LOGIN_OR_REGISTER_DIALOG']),
+    handleChangeTheme () {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+      this.$cookies.set('theme', this.$vuetify.theme.dark ? 'dark' : 'white');
+    },
+  //   handleShowSide () {
+  //     this.$store.commit('SET_SIDE_STATUS', true);
+  //   },
+  //   // async loadUserMessageCount () {
+  //   //   const user = this.user;
+  //   //   if (!user) return;
+  //   //   const resData = await this.$axios.get('/api/users/notify/count');
+  //   //   this.messageCount = resData;
+  //   // },
+  //   handleGoMessage () {
+  //     this.$router.push('/user/notice')
+  //   },
+  //   async handleLoadNoticeStatus () {
+  //     await this.$store.dispatch('loadNoticeStatus');
+
+  //     setTimeout(() => {
+  //       this.handleLoadNoticeStatus();
+  //     }, 3000);
+  //   }
+  }
+};
+</script>
+
+<style lang="scss">
+.theme--light.v-application {
+  background-color: #f4f4f4;
+}
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: #fff;
+}
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+  background-color: #151515;
+}
+.toolbar-content {
+  /* max-width: 1440px;
+  width: 100%; */
+  height: 100%;
+  /* margin: 0 auto; */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 600px) {
+    .toolbar-action,
+    .toolbar-nav {
+      display: none !important;
+    }
+    .toolbar-apps {
+      display: block !important;
+    }
+  }
+  .toolbar-apps {
+    display: none;
+  }
+  .toolbar-title {
+    .v-btn.v-size--default {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .toolbar-nav {
+    height: 100%;
+    .v-btn.v-size--default {
+      min-width: 80px;
+      margin: 0 6px;
+      height: 100%;
+      border: none;
+    }
+  }
+  .toolbar-action {
+    display: flex;
+    align-items: center;
+    .v-btn {
+      margin-right: 12px;
     }
   }
 }
-</script>
+.footer {
+  text-align: center;
+  font-size: 14px;
+  /* color: #333; */
+  line-height: 2;
+  a {
+    /* color: #333; */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+#app .v-card {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+}
+</style>
