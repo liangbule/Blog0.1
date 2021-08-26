@@ -84,7 +84,8 @@
     <!-- <LoginOrRegister v-if="LoginOrRegisterDialog" /> -->
     <!-- <NavigationDrawer v-if="sideStatus" /> -->
     <ScrollToTop />
-    <!-- <SvgWalle /> -->
+    <!-- 机器人 -->
+    <SvgWalle />
   </v-app>
 </template>
 
@@ -109,7 +110,7 @@ export default {
     CurrentUser,
     // NavigationDrawer: () => import('@/components/NavigationDrawer.vue'),
     ScrollToTop,
-    // SvgWalle: () => import('@/components/svg/Walle.vue')
+    SvgWalle: () => import('@/components/svg/Walle.vue')
   },
   data () {
     return {
