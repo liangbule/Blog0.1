@@ -1,3 +1,10 @@
+<!--
+ * @Author: liangbule
+ * @Date: 2021-08-26 21:54:33
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-28 01:58:18
+ * @Description: 
+-->
 <template>
   <v-carousel
     :continuous="false"

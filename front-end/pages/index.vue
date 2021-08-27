@@ -18,7 +18,7 @@
               <v-switch :value="false" inset label="热门" disabled></v-switch>
             </v-row>
           </v-container>
-          <!-- <article-list :articleStore="articleStore" @loadData="loadData" /> -->
+          <article-list :articleStore="articleStore" @loadData="loadData" />
         </v-col>
         <v-col :md="4" :sm="12" :cols="12">
           <v-lazy transition="scale-transition" min-height="100px">
@@ -43,11 +43,10 @@
 </template>
 
 <script>
-// import ArticleItem from '@/components/article/ArticleItem.vue';
 import Banner from '@/components/Banner.vue';
 // import SideRandomArticle from '@/components/SideRandomArticle.vue';
 // import SideCommentList from '@/components/SideCommentList.vue';
-// import ArticleList from '@/components/ArticleList.vue';
+import ArticleList from '@/components/ArticleList.vue';
 // import TagList from '@/components/TagList.vue';
 export default {
   scrollToTop: true,
@@ -75,8 +74,8 @@ export default {
   mounted () {
      console.log('data',this.$data);
   },
-  // components: { ArticleItem, Banner, ArticleList, TagList, SideRandomArticle, SideCommentList },
-  components: { Banner },
+  // components: { Banner, ArticleList, TagList, SideRandomArticle, SideCommentList },
+  components: { Banner ,ArticleList},
   data () {
     return {
       timed: 0,
@@ -101,13 +100,13 @@ export default {
       this.page_index++;
       this.articleLoading = true;
 
-      const articleData = await this.$axios.get('/api/article/list/all', {
-        params: {
-          page_index: this.page_index
-        }
-      });
-      this.articleStore.total = articleData.total;
-      this.articleStore.list.push(...articleData.list);
+      // const articleData = await this.$axios.get('/api/article/list/all', {
+      //   params: {
+      //     page_index: this.page_index
+      //   }
+      // });
+      // this.articleStore.total = articleData.total;
+      // this.articleStore.list.push(...articleData.list);
       this.articleLoading = false;
     }
   }

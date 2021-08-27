@@ -91,10 +91,10 @@
 
 <script>
 import { mapMutations, mapState, mapActions } from 'vuex';
-import CurrentUser from '@/components/CurrentUser.vue';
-import NavigationDrawer from '@/components/NavigationDrawer.vue';
+// import CurrentUser from '@/components/CurrentUser.vue';
+// import NavigationDrawer from '@/components/NavigationDrawer.vue';
 import ScrollToTop from '@/components/ScrollToTop.vue';
-import ComponetLoading from '@/components/common/Loading.vue';
+// import ComponetLoading from '@/components/common/Loading.vue';
 
 export default {
   components: {
@@ -106,8 +106,8 @@ export default {
     //     timeout: 3000
     //   };
     // },
-    ComponetLoading,
-    CurrentUser,
+    // ComponetLoading,
+    // CurrentUser,
     // NavigationDrawer: () => import('@/components/NavigationDrawer.vue'),
     ScrollToTop,
     SvgWalle: () => import('@/components/svg/Walle.vue')
@@ -129,7 +129,6 @@ export default {
     const h = new Date().getHours();
     const theme = this.$cookies.get('theme');
 
-    console.log('this',theme,this.$cookies);
     let isDark = (h >= 19 && h <= 24) || (h >= 0 && h <= 7);
     if (theme) {
       isDark = theme === 'white';
@@ -146,12 +145,12 @@ export default {
     handleShowSide () {
       this.$store.commit('SET_SIDE_STATUS', true);
     },
-    async loadUserMessageCount () {
-      const user = this.user;
-      if (!user) return;
-      const resData = await this.$axios.get('/api/users/notify/count');
-      this.messageCount = resData;
-    },
+    // async loadUserMessageCount () {
+    //   const user = this.user;
+    //   if (!user) return;
+    //   const resData = await this.$axios.get('/api/users/notify/count');
+    //   this.messageCount = resData;
+    // },
     handleGoMessage () {
       this.$router.push('/user/notice')
     },
