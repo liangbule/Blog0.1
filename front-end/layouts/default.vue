@@ -94,7 +94,7 @@ import { mapMutations, mapState, mapActions } from 'vuex';
 // import CurrentUser from '@/components/CurrentUser.vue';
 // import NavigationDrawer from '@/components/NavigationDrawer.vue';
 import ScrollToTop from '@/components/ScrollToTop.vue';
-// import ComponetLoading from '@/components/common/Loading.vue';
+import ComponetLoading from '@/components/common/Loading.vue';
 
 export default {
   components: {
@@ -106,7 +106,7 @@ export default {
     //     timeout: 3000
     //   };
     // },
-    // ComponetLoading,
+    ComponetLoading,
     // CurrentUser,
     // NavigationDrawer: () => import('@/components/NavigationDrawer.vue'),
     ScrollToTop,

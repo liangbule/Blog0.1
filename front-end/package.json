@@ -5,10 +5,15 @@
   "author": "liangbule",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "cross-env NODE_ENV=development PORT=9907 nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0"
+    }
   },
   "dependencies": {
     "@mdi/js": "^5.9.55",
