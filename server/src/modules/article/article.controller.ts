@@ -10,7 +10,9 @@ import {
   Delete
 } from '@nestjs/common';
 import path = require('path/posix');
+import {ApiQuery,ApiResponse,ApiParam,ApiBody } from '@nestjs/swagger';
 import { ArticleService } from './article.service';
+import {Hellow,UserRole} from './classes/article'
 // 模块入口
 @Controller('article')
 export class ArticleController {
@@ -18,6 +20,14 @@ export class ArticleController {
   
   // 查询
   @Get()
+  @ApiQuery({name:'name',required: false})
+  @ApiQuery({name:'role',enum: UserRole})
+  @ApiResponse({ // 返回
+    status:200,
+    description: 'get......描述',
+    type: Hellow
+  })
+
   getArticle(@Query() { id }, @Headers('token') token): string {
     console.log(token);
     return this.articleService.getArticle(id);
@@ -30,6 +40,8 @@ export class ArticleController {
 
   // 更新
   @Patch(':id')
+  @ApiParam({name: 'id'})
+  @ApiBody({description: '请输入message'})
   uptate(@Param() {id},@Body() {message}): string {
     return this.articleService.uptateArticle(id,message);
   }
