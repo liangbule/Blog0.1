@@ -1,10 +1,11 @@
 /*
- * @Author: bucai
- * @Date: 2020-05-04 20:42:44
- * @LastEditors: bucai
- * @LastEditTime: 2020-08-15 20:40:27
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:34:02
  * @Description: 
  */
+
 
 import Vue from 'vue';
 import mavonEditor from 'mavon-editor';

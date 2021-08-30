@@ -1,10 +1,11 @@
 /*
- * @Author: bucai
- * @Date: 2020-05-02 22:03:18
- * @LastEditors: bucai
- * @LastEditTime: 2021-03-29 19:41:53
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:33:07
  * @Description: 
  */
+
 import Vue from 'vue';
 import * as constant from '../constant/common';
 

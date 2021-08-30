@@ -1,10 +1,11 @@
 /*
- * @Author: bucai
- * @Date: 2020-04-19 14:39:55
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
  * @LastEditors: liangbule
- * @LastEditTime: 2021-08-26 00:02:37
+ * @LastEditTime: 2021-08-30 20:32:35
  * @Description: axios配置
  */
+
 // import Snackbar from '../components/snackbar';
 
 export default function ({ $axios, app, redirect, error: _error }) {

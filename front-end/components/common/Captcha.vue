@@ -1,10 +1,11 @@
 <!--
- * @Author: bucai
- * @Date: 2021-04-01 22:28:00
- * @LastEditors: bucai
- * @LastEditTime: 2021-04-01 22:29:09
- * @Description:
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:32:15
+ * @Description: 
 -->
+
 <template>
   <div class="captcha">
 

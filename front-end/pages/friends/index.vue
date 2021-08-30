@@ -1,10 +1,11 @@
 <!--
- * @Author: bucai
- * @Date: 2021-03-30 19:47:48
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
  * @LastEditors: liangbule
- * @LastEditTime: 2021-08-29 00:34:12
- * @Description:
+ * @LastEditTime: 2021-08-30 20:32:20
+ * @Description: 
 -->
+
 <template>
   <v-container class="friends">
     <v-card elevation="0" class="rounded">

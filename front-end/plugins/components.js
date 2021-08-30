@@ -1,8 +1,9 @@
 /*
- * @Author: bucai
- * @Date: 2020-05-03 12:35:07
- * @LastEditors: bucai
- * @LastEditTime: 2020-05-03 12:37:42
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:33:02
  * @Description: 
  */
+
 import Vue from 'vue';

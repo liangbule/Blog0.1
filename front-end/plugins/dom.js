@@ -1,10 +1,11 @@
 /*
- * @Author: bucai
- * @Date: 2020-04-19 23:12:32
- * @LastEditors: bucai
- * @LastEditTime: 2020-04-19 23:14:03
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:33:10
  * @Description: 
  */
+
 import Vue from 'vue';
 import * as dom from '../assets/dom';
 

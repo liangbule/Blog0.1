@@ -1,10 +1,4 @@
-<!--
- * @Author: bucai
- * @Date: 2020-05-02 21:01:07
- * @LastEditors: bucai
- * @LastEditTime: 2021-04-01 22:26:36
- * @Description:
--->
+
 <template>
   <v-dialog
     :z-index="9999"

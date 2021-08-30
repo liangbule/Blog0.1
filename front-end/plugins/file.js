@@ -1,10 +1,11 @@
 /*
- * @Author: bucai
- * @Date: 2020-05-05 10:54:31
- * @LastEditors: bucai
- * @LastEditTime: 2020-05-05 11:00:30
- * @Description: 文件
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:33:17
+ * @Description: 
  */
+
 import Vue from 'vue';
 import * as file from '../utils/file';
 

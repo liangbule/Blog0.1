@@ -1,10 +1,11 @@
 /*
- * @Author: bucai
- * @Date: 2020-04-19 15:26:33
- * @LastEditors: bucai
- * @LastEditTime: 2020-05-03 12:37:56
+ * @Author: liangbule
+ * @Date: 2021-08-29 16:33:52
+ * @LastEditors: liangbule
+ * @LastEditTime: 2021-08-30 20:33:43
  * @Description: 
  */
+
 // 引入vue 及 lodash
 import Vue from 'vue'
 import upperFirst from 'lodash/upperFirst'  // 首字线大写
