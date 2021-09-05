@@ -2,7 +2,7 @@
  * @Author: liangbule
  * @Date: 2021-09-04 11:16:29
  * @LastEditors: liangbule
- * @LastEditTime: 2021-09-05 12:17:15
+ * @LastEditTime: 2021-09-05 13:04:41
  * @Description: 
  */
 
@@ -11,7 +11,7 @@ import { plainToClass } from 'class-transformer'
 import { validate } from "class-validator";
 
 @Injectable()
-export class ValidationPipe implements PipeTransform<any>{
+export class Validation implements PipeTransform<any>{
     async transform(value:any , metadata: ArgumentMetadata){
         console.log(value);
         const {metatype} = metadata
