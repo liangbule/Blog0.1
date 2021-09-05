@@ -10,7 +10,8 @@ import {
   Delete,
   UseFilters,
   HttpException,
-  HttpStatus
+  HttpStatus,
+  ParseIntPipe
 } from '@nestjs/common';
 import path = require('path/posix');
 import {ApiQuery,ApiResponse,ApiParam,ApiBody } from '@nestjs/swagger';
@@ -54,7 +55,9 @@ export class ArticleController {
   @Patch(':id')
   @ApiParam({name: 'id'})
   @ApiBody({description: '请输入message'})
-  uptate(@Param() {id},@Body() {message}): string {
+  uptate(@Param('id', new ParseIntPipe()) id,@Body() {message}): string {
+    console.log(typeof id);
+    
     return this.articleService.uptateArticle(id,message);
   }
   // 删除
