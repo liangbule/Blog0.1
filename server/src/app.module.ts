@@ -2,7 +2,7 @@
  * @Author: liangbule
  * @Date: 2021-08-29 11:40:06
  * @LastEditors: liangbule
- * @LastEditTime: 2021-09-06 01:25:51
+ * @LastEditTime: 2021-09-07 23:28:06
  * @Description: 
  */
 import { Module ,MiddlewareConsumer,RequestMethod, UseFilters} from '@nestjs/common';
@@ -11,6 +11,8 @@ import {LoggerMiddleware} from './common/logger.middlewaer'
 // 导入模块
 import { ArticleModule } from './modules/article/article.module'
 import {RolesGuard} from './modules/roles-guard/roles-guard.module'
+import { EmailModule } from './email/email.module';
+import { EmailController } from './email/email.controller';
 import {GlobalExceptionFilter}  from './core/filters/global-exceptoin.filter'
 // meail
 import * as path from 'path'
@@ -19,9 +21,12 @@ import * as path from 'path'
 @UseFilters(new GlobalExceptionFilter())
 @Module({
   imports: [
+    EmailModule,
     ArticleModule,
     RolesGuard,
+    EmailModule,
   ],
+  controllers: [EmailController],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer){
