@@ -1,8 +1,8 @@
 /*
  * @Author: liangbule
  * @Date: 2021-08-29 11:40:06
- * @LastEditors: liangbule
- * @LastEditTime: 2021-09-07 23:28:06
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-09-09 23:42:48
  * @Description: 
  */
 import { Module ,MiddlewareConsumer,RequestMethod, UseFilters} from '@nestjs/common';
@@ -14,6 +14,8 @@ import {RolesGuard} from './modules/roles-guard/roles-guard.module'
 import { EmailModule } from './email/email.module';
 import { EmailController } from './email/email.controller';
 import {GlobalExceptionFilter}  from './core/filters/global-exceptoin.filter'
+import { StatusMonitorModule } from 'nest-status-monitor'
+import statusMonitorConfig from './config/statusMonitor'
 // meail
 import * as path from 'path'
 
@@ -21,7 +23,8 @@ import * as path from 'path'
 @UseFilters(new GlobalExceptionFilter())
 @Module({
   imports: [
-    EmailModule,
+    StatusMonitorModule.setUp(statusMonitorConfig),
+    // EmailModule,
     ArticleModule,
     RolesGuard,
     EmailModule,

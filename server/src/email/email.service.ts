@@ -1,8 +1,8 @@
 /*
  * @Author: liangbule
  * @Date: 2021-09-07 21:13:03
- * @LastEditors: liangbule
- * @LastEditTime: 2021-09-07 23:32:13
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-09-09 23:35:53
  * @Description:
  */
 import { Injectable } from '@nestjs/common';
@@ -21,8 +21,8 @@ export class EmailService {
         to: 'itduxiang@163.com',
         from: '576865892@qq.com',
         subject: 'Testing Nest MailerService',
-        // html: '<b>Welcome Frost!</b>',
-        template: 'validate.code.ejs',
+        html: '<b>Welcome Frost!</b>',
+        // template: 'validate.code.ejs',
       })
     //   .then(() => {})
     //   .catch(() => {});

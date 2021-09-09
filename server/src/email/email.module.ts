@@ -1,8 +1,8 @@
 /*
  * @Author: liangbule
  * @Date: 2021-09-07 21:11:52
- * @LastEditors: liangbule
- * @LastEditTime: 2021-09-07 23:32:44
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-09-08 00:03:27
  * @Description:
  */
 import { MailerModule } from '@nestjs-modules/mailer';
@@ -15,16 +15,17 @@ import { EmailService } from './email.service';
 import { EmailController } from './email.controller';
 
 @Module({
-  imports: [
+	imports: [
 		MailerModule.forRootAsync({
 			useFactory: () => ({
-        transport: 'smtps://576865892@qq.com:********@smtp.qq.com',
+
+				transport: 'smtps://576865892@qq.com:sss*sss*ssssaina******@smtp.qq.com',
 				defaults: {
 					from: '"domain.com" <no-reply@domain.com>'
 				},
 				template: {
-          // dir: process.cwd() + '/src/template/', // 这一句不用配置，可以找到路径
-         dir: path.join(__dirname, './template'),
+					// dir: process.cwd() + '/src/template/', // 这一句不用配置，可以找到路径
+					dir: path.join(__dirname, './template'),
 					adapter: new EjsAdapter(),
 					options: {
 						strict: true
@@ -32,9 +33,9 @@ import { EmailController } from './email.controller';
 				}
 			})
 		}),
-  ],
-  providers: [EmailService],
-  controllers: [EmailController],
-  exports: [EmailService],
+	],
+	providers: [EmailService],
+	controllers: [EmailController],
+	exports: [EmailService],
 })
-export class EmailModule {}
+export class EmailModule { }
