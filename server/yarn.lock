@@ -720,7 +720,7 @@
     "lodash" "4.17.21"
     "path-to-regexp" "3.2.0"
 
-"@nestjs/websockets@^6.11.11":
+"@nestjs/websockets@^6.11.8":
   "integrity" "sha512-maOV9KkQUiBWx7mWuLhbudM9svA3h8adRGN3z/LZ3vOZazYI97ZzrirsLw/9MeqZvaOaRnGbJpIo4p0lvtUztA=="
   "resolved" "https://repo.huaweicloud.com/repository/npm/@nestjs/websockets/-/websockets-6.11.11.tgz"
   "version" "6.11.11"
@@ -4806,12 +4806,12 @@
   "resolved" "https://repo.huaweicloud.com/repository/npm/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
 
-"nest-status-monitor@^0.1.4":
-  "integrity" "sha512-0ncgSfsLDPpOw9RP553epCBZXYByXpsZ1la5HsXv38Jlzz2VOCUdCy9y/nUD8596hlVhF4zbBLmzq3bnQrSLAQ=="
-  "resolved" "https://repo.huaweicloud.com/repository/npm/nest-status-monitor/-/nest-status-monitor-0.1.4.tgz"
-  "version" "0.1.4"
+"nest-status-monitor@^0.1.3":
+  "integrity" "sha512-3doFwvusNY4nxXfhZmQXgK6rwUBZnmqbnUpaZNDLCauAMXaY0ZYIKzvJ6VYfBpyL3pWc4Qtok0jFicytPsWdXw=="
+  "resolved" "https://repo.huaweicloud.com/repository/npm/nest-status-monitor/-/nest-status-monitor-0.1.3.tgz"
+  "version" "0.1.3"
   dependencies:
-    "@nestjs/websockets" "^6.11.11"
+    "@nestjs/websockets" "^6.11.8"
     "axios" "^0.19.2"
     "debug" "^2.6.8"
     "handlebars" "4.7.3"

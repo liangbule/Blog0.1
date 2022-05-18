@@ -1,15 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-09-09 23:03:12
- * @LastEditTime: 2021-09-09 23:45:48
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-09-10 00:00:40
+ * @LastEditors: your name
  * @Description: In User Settings Edit
- * @FilePath: /Blog0.1/server/src/config/statusMion.js
+ * @FilePath: /Blog0.1/server/src/config/statusMonitor.ts
  */
-const portNumber = parseInt(process.env.PORT) || 3000;
-const statusMonitorConfig = {
-    pageTitle: 'Nest.js 监控', // Default title
-    port: portNumber,
+export default {
+    pageTitle: 'Nest.js Monitoring Page',
+    port: 3000,
     path: '/status',
     ignoreStartsWith: '/healt/alive',
     spans: [
@@ -35,5 +34,4 @@ const statusMonitorConfig = {
       statusCodes: true,
     },
     healthChecks: [],
-}
-export default statusMonitorConfig
+  };
